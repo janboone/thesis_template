@@ -30,7 +30,7 @@ Alternatively, you can use latex directly in which case you can consider the fil
 
 In order to use emacs, you need to install it. The official website's download information: https://www.gnu.org/software/emacs/download.html
 
-In Section ref:sec:intro we explain how emacs can be installed.
+In Section ref:sec:install we explain how emacs can be installed.
 
 
 * Literature references
@@ -45,7 +45,9 @@ If you use the =init.el= file for emacs, you can use the keys: C-c ] (press cont
 
 * Model
 
-As we explained in section ref:sec:intro.
+As we explained in section ref:sec:intro. This shows the synatx for a reference to a section, equation, table, figure etc. Type =ref:= and then the name of the label you are refering to. This can also be done with key strokes: C-c )
+
+A label is typed in latex format as: =\label{name_of_label}=. For org-mode you need to add =#+name: name_of_label= to tables and figures.
 
 Here we have some in-line math: $x^2$.[fn::This is a footnote.]
 
@@ -78,7 +80,7 @@ See Figure ref:figure1.
 
 * Conclusion
 
-
+Here you can type the conclusion which is then followed by the bibliography.
 
 * Bibliography
 
@@ -101,7 +103,7 @@ Install latex: https://www.latex-project.org/get/
 
 
 
-** latex editor
+** latex editors
 
 - winedt: https://www.winedt.com/
 - overleaf: https://www.overleaf.com/
@@ -113,7 +115,6 @@ More general editors where you can also edit latex:
 - atom: https://atom.io/
   - and how to use with latex: https://towardsdatascience.com/setting-up-latex-on-your-atom-editor-7ea624571d50
 - vim: https://www.vim.org/docs.php
-
 
    
 ** git
@@ -163,8 +164,12 @@ A great starting point, explaining key-bindings etc. is:
     - you save a file with C-x C-s; hence you can quickly save a file by pressing these keys without having to reach for the mouse
     - the emacs configuration below helps as it uses the which-key package. After typing C-x, it shows you what other keys you can use.
 
-
-https://www.youtube.com/playlist?list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg
+There are other great introductions to emacs as well:
+- https://www.youtube.com/playlist?list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg
+- https://www.youtube.com/playlist?list=PLwTHcico4iPMlBZPin6catRcUDzf7NNVs
+- or google emacs tutorial or emacs for beginners
+- finally, emacs is self documenting: all information can be found in emacs as well, just type C-h i
+  - this gives information on emacs and all the packages you installed with emacs
 
 
 
@@ -173,15 +178,21 @@ https://www.youtube.com/playlist?list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg
 
 ** basic configuration :noexport:
 
-Make emacs look better:
+Make emacs look better. When you start emacs "out-of-the-box" it does not look very nice, nor is it very easy to use. The code block below helps to remedy this. It is based on this init-file:
+- https://github.com/daviwil/emacs-from-scratch/blob/3075158cae210060888001c0d76a58a4178f6a00/init.el
+which is discussed in this video:
+- https://www.youtube.com/watch?v=74zOY-vgkyw&t=148s
+It is highly recommended that you watch this video to get a sense on how the customization of emacs works.
 
-https://github.com/daviwil/emacs-from-scratch/blob/3075158cae210060888001c0d76a58a4178f6a00/init.el
+You can use this code by placing your cursor in the code block below (it is written in emacs-lisp) and then press: C-c C-c
 
-https://www.youtube.com/watch?v=74zOY-vgkyw&t=148s
+Before using the code, you need to install the font that you want to use.
 
 I use the font Source Code Pro which can be downloaded here: https://fonts.google.com/specimen/Source+Code+Pro
+- if you do not have this font installed, you will get an error
+- if you do not want to use a different font, put ";" in front of that line in the code. Like "#" in python, ";" indicates in elisp that what follows is a comment
 
-If you get an error running this code block that a package cannot be found, run =M-X package-refresh-contents=
+If you get an error running this code block saying that a package cannot be found, run =M-X package-refresh-contents=
 
 At the end of the code block I activate evil mode. You probably do not want to do that at the start as it can be a bit confusing. 
 
