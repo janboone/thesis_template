@@ -1,17 +1,22 @@
-% Created 2022-02-19 Sat 13:36
+% Created 2022-02-26 Sat 17:35
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage{grffile}
 \usepackage{longtable}
 \usepackage{wrapfig}
 \usepackage{rotating}
 \usepackage[normalem]{ulem}
 \usepackage{amsmath}
+\usepackage{textcomp}
 \usepackage{amssymb}
 \usepackage{capt-of}
 \usepackage{hyperref}
+\makeatletter
+\newcommand{\citeprocitem}[2]{\hyper@linkstart{cite}{citeproc_bib_item_#1}#2\hyper@linkend}
+\makeatother
 \author{Adam Smith}
 \date{\today}
 \title{Thesis title}
@@ -20,16 +25,18 @@
  pdftitle={Thesis title},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 27.2 (Org mode 9.6)}, 
+ pdfcreator={Emacs 27.2 (Org mode 9.4.4)}, 
  pdflang={English}}
 \begin{document}
 
 \maketitle
 \begin{abstract}
-In this thesis we show that \ldots{}
+This document shows you the syntax to type your thesis in latex or org-mode. It illustrates how to make footnotes, tables, equations and references to tables, equations etc.
+
+If you want to work with latex only, look at the \texttt{.tex} file of this document. If you want to use emacs org-mode, then use the \texttt{.org} file. The pdf shows what the file looks like if you export it.
+
+Running python code in this file only works in emacs org-mode; not in latex.
 \end{abstract}
-
-
 
 \newpage
 
@@ -40,35 +47,33 @@ In this thesis we show that \ldots{}
 
 
 \section{Introduction}
-\label{sec:org566bd8f}
+\label{sec:org75302b8}
 \label{sec:intro}
 
+This file shows you how to use \href{https://www.gnu.org/software/emacs/}{emacs} \href{https://orgmode.org/}{org mode} to write a thesis. Shows you how to cite references, make footnotes, equations etc.
+
+Alternatively, you can use latex directly in which case you can consider the file in this repository that ends in \texttt{.tex}.
+
+In order to use emacs, you need to install it. The official website's download information: \url{https://www.gnu.org/software/emacs/download.html}
+
+In Section \ref{sec:intro} we explain how emacs can be installed.
 
 
 \section{Literature references}
-\label{sec:org729d046}
+\label{sec:org5dd2a3d}
 
+There are a number of ways in which you can do literature citations in org-mode. We will work with org-ref:
+\begin{itemize}
+\item \url{https://github.com/jkitchin/org-ref}
+\end{itemize}
 
-\subsection{org cite}
-\label{sec:org88254cd}
+The syntax for including references is as follows. See Farrell and Klemperer \citeprocitem{2}{2007} for an analysis. We can also have references between brackets (\citeprocitem{1}{Athey and Imbens 2019}): that is, \texttt{citep} instead of \texttt{citet}. \texttt{armstrong-2007-chapt-coord} is the bibtex key, as you can see in the file \texttt{references.bib}.
 
-\url{https://blog.tecosaur.com/tmio/2021-07-31-citations.html}
-
-(Athey, Susan and Imbens, Guido W., 2019)
-
-
-
-\subsection{org-ref}
-\label{sec:org25e86c2}
-
-
-\url{https://github.com/jkitchin/org-ref}
-
-See \cite{armstrong-2007-chapt-coord} for an analysis. We can also have references between brackets \citep{athey-2019-machin-learn}.
+If you use the \texttt{init.el} file for emacs, you can use the keys: C-c ] (press control (Ctrl) and c together; release these keys and then press the ]-key). The bottom part of the screen then gives you possible papers to cite from your \texttt{references.bib} file.
 
 
 \section{Model}
-\label{sec:org84e90fc}
+\label{sec:org867adc8}
 
 As we explained in section \ref{sec:intro}.
 
@@ -81,8 +86,10 @@ a^2 + b^2 = c^2
 
 As we show in equation \eqref{eq:1}.
 
+See Table \ref{table1}.
+
 \begin{table}[htbp]
-\caption{\label{table1}This table shows unemployment and gdp per head.}
+\caption{\label{tab:org35712fb}\label{table1} This table shows unemployment and gdp per head.}
 \centering
 \begin{tabular}{lrr}
 country & unemployment & gdp\\
@@ -95,69 +102,160 @@ average & 0.05 & 20200\\
 \end{tabular}
 \end{table}
 
-
-\begin{verbatim}
-import numpy as np
-import pandas as pd
-X = np.array(data)
-plt.plot(X[1:,2],X[1:,1],'o')
-plt.savefig('./fig.png')
-\end{verbatim}
-
-\begin{verbatim}
-/tmp/babel-URrt4d/python-daaqjg
-\end{verbatim}
-
-
-\begin{verbatim}
-df = pd.DataFrame(X[1:,:],columns=X[0,:])
-df
-\end{verbatim}
-
-\begin{verbatim}
-   country unemployment    gdp
-0       NL         0.06  20000
-1       UK         0.01  19500
-2       BE         0.08  21100
-3  average         0.05  20200
-\end{verbatim}
-
-
-\begin{verbatim}
-import matplotlib.pyplot as plt
-plt.plot(df.gdp,df.unemployment,'o')
-plt.savefig('./fig.png')
-\end{verbatim}
-
-\begin{verbatim}
-None
-\end{verbatim}
-
-
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./fig.png}
-\caption{\label{figure1}Figure with unemployment and gdp}
+\caption{\label{fig:org1a839e9}\label{figure1} Figure with unemployment and gdp}
 \end{figure}
 
 See Figure \ref{figure1}.
 
+
 \section{Conclusion}
-\label{sec:org05aefe3}
+\label{sec:org488ea8a}
 
 
 
 \section{Bibliography}
-\label{sec:org0df9e45}
+\label{sec:org56e9727}
 
-\subsection{org ref}
-\label{sec:org81dd431}
 
-\bibliography{references}
 
-\subsection{org cite}
-\label{sec:orgd3c1741}
+\hypertarget{citeproc_bib_item_1}{Athey, Susan, and Guido W. Imbens. 2019. “Machine Learning Methods That Economists Should Know About.” \textit{Annual Review of Economics} 11 (1): 685–725. doi:\href{https://doi.org/10.1146/annurev-economics-080217-053433}{10.1146/annurev-economics-080217-053433}.}
 
-\noindent
-Athey, Susan and Imbens, Guido W. (2019). \emph{Machine Learning Methods That Economists Should Know About}, Annual Review of Economics.
+\hypertarget{citeproc_bib_item_2}{Farrell, Joseph, and Paul Klemperer. 2007. “Chapter 31 Coordination and Lock-in: Competition with Switching Costs and Network Effects,” edited by M. Armstrong and R. Porter, 3:1967–2072. Handbook of Industrial Organization, Supplement C. Elsevier. doi:\href{https://doi.org/10.1016/S1573-448X(06)03031-7}{10.1016/S1573-448X(06)03031-7}.}
+
+
+
+
+
+\newpage
+\appendix
+
+
+\section{Things to install}
+\label{sec:orgea6af2f}
+\label{sec:install}
+
+\subsection{latex}
+\label{sec:orgd31fa40}
+
+Install latex: \url{https://www.latex-project.org/get/}
+
+
+
+\subsection{latex editor}
+\label{sec:org97b6068}
+
+\begin{itemize}
+\item winedt: \url{https://www.winedt.com/}
+\item overleaf: \url{https://www.overleaf.com/}
+\item texmaker: \url{https://www.xm1math.net/texmaker/}
+\item tex studio: \url{https://www.texstudio.org/}
+\end{itemize}
+
+More general editors where you can also edit latex:
+
+\begin{itemize}
+\item atom: \url{https://atom.io/}
+\begin{itemize}
+\item and how to use with latex: \url{https://towardsdatascience.com/setting-up-latex-on-your-atom-editor-7ea624571d50}
+\end{itemize}
+\item vim: \url{https://www.vim.org/docs.php}
+\end{itemize}
+
+
+
+\subsection{git}
+\label{sec:orgb0cccdd}
+
+install git: \url{https://git-scm.com/downloads}
+
+\subsection{Emacs on Windows}
+\label{sec:org8ef348d}
+
+\begin{itemize}
+\item go to: \url{http://mirror.team-cymru.com/gnu/emacs/windows/emacs-27/}
+\item download emacs-27.2-x86\textsubscript{64}-installer.exe to your Downloads folder: \url{http://mirror.team-cymru.com/gnu/emacs/windows/emacs-27/emacs-27.2-x86\_64-installer.exe}
+\item run the downloaded \texttt{exe} file
+\end{itemize}
+
+\subsection{Emacs on Mac OS}
+\label{sec:org091dc2d}
+
+For Mac Os:
+\begin{itemize}
+\item install homebrew: \url{https://brew.sh/}
+\end{itemize}
+
+Open a terminal and type the following lines:
+
+\begin{verbatim}
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
+\end{verbatim}
+
+\subsection{Emacs on Linux}
+\label{sec:org3ddf458}
+
+When you are using Linux, you probably know what you are doing. But just in case, the commands for your package manager can be found here: \url{https://www.gnu.org/software/emacs/download.html}
+
+
+
+\subsection{org-mode}
+\label{sec:org903ce05}
+
+When you install emacs, org-mode is installed as well (comes with emacs)
+
+
+\subsection{introductions to emacs}
+\label{sec:orgae425b7}
+
+It is easy to get lost in emacs. Hence do not try to use everything at once. A couple of basic things, you need from the start (like opening and saving files). For the other things: move step-by-step. 
+
+A great starting point, explaining key-bindings etc. is:
+\begin{itemize}
+\item \url{https://systemcrafters.net/emacs-essentials/absolute-beginners-guide-to-emacs/}
+\begin{itemize}
+\item and the video that goes with it: \url{https://www.youtube.com/watch?v=48JlgiBpw\_I}
+\item this explains things like "M-x", "C-c", "C-x" etc. which you can see when you use menu items like "file"
+\begin{itemize}
+\item to illustrate, use your mouse to click on "File" in the top left corner
+\item the first item is: "Visit New File\ldots{} C-x C-f"
+\item you can click on this item to open a file; but you can also use the key combination C-x C-f which means: press Control (Ctrl) and x together; release these keys; then press Ctrl and f together. This allows you to open a file. If you type the name of a file that does not exist yet, this new file will be created
+\item you save a file with C-x C-s; hence you can quickly save a file by pressing these keys without having to reach for the mouse
+\item the emacs configuration below helps as it uses the which-key package. After typing C-x, it shows you what other keys you can use.
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+
+\url{https://www.youtube.com/playlist?list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg}
+
+
+
+
+
+
+\subsection{next steps}
+\label{sec:org873adc7}
+
+\subsubsection{scimax}
+\label{sec:orgc1042b1}
+
+\url{https://github.com/jkitchin/scimax}
+
+youtube playlist with scimax features: \url{https://www.youtube.com/playlist?list=PL0sMmOaE\_gs3E0OjExoI7vlCAVygj6S4I}
+
+\subsubsection{Doom}
+\label{sec:org02ee11b}
+
+\url{https://github.com/hlissner/doom-emacs}
+
+Doom emacs for noobs: \url{https://www.youtube.com/watch?v=iab2z21cRqA}
+
+Doom emacs getting started: \url{https://www.youtube.com/watch?v=dr\_iBj91eeI}
+
+
+youtube playlist: \url{https://www.youtube.com/playlist?list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj}
 \end{document}

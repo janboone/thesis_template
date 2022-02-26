@@ -1,13 +1,17 @@
-#+PROPERTY: header-args  :session thesis :kernel python3 :async yes
-
 #+TITLE: Thesis title
 #+author: Adam Smith
 #+options: toc:nil
 
-#+begin_abstract
-In this thesis we show that ...
+#+PROPERTY: header-args  :session thesis :kernel python3 :async yes
 
-In this document I show the syntax to type in latex or org-mode
+
+
+#+begin_abstract
+This document shows you the syntax to type your thesis in latex or org-mode. It illustrates how to make footnotes, tables, equations and references to tables, equations etc.
+
+If you want to work with latex only, look at the =.tex= file of this document. If you want to use emacs org-mode, then use the =.org= file. The pdf shows what the file looks like if you export it.
+
+Running python code in this file only works in emacs org-mode; not in latex.
 #+end_abstract
 
 #+LATEX: \newpage
@@ -26,12 +30,97 @@ Alternatively, you can use latex directly in which case you can consider the fil
 
 In order to use emacs, you need to install it. The official website's download information: https://www.gnu.org/software/emacs/download.html
 
-Install emacs 27.2 or later
+In Section ref:sec:intro we explain how emacs can be installed.
 
+
+* Literature references
+
+There are a number of ways in which you can do literature citations in org-mode. We will work with org-ref:
+- https://github.com/jkitchin/org-ref
+
+The syntax for including references is as follows. See [[citet:&armstrong-2007-chapt-coord]] for an analysis. We can also have references between brackets [[citep:&athey-2019-machin-learn]]: that is, =citep= instead of =citet=. =armstrong-2007-chapt-coord= is the bibtex key, as you can see in the file =references.bib=.
+
+If you use the =init.el= file for emacs, you can use the keys: C-c ] (press control (Ctrl) and c together; release these keys and then press the ]-key). The bottom part of the screen then gives you possible papers to cite from your =references.bib= file.
+
+
+* Model
+
+As we explained in section ref:sec:intro.
+
+Here we have some in-line math: $x^2$.[fn::This is a footnote.]
+
+\begin{equation}
+\label{eq:1}
+a^2 + b^2 = c^2
+\end{equation}
+
+As we show in equation eqref:eq:1.
+
+See Table ref:table1.
+
+#+name: table1
+#+caption: \label{table1} This table shows unemployment and gdp per head.
+| country | unemployment |   gdp |
+|---------+--------------+-------|
+| NL      |         0.06 | 20000 |
+| UK      |         0.01 | 19500 |
+| BE      |         0.08 | 21100 |
+|---------+--------------+-------|
+| average |         0.05 | 20200 |
+#+TBLFM: @5$2=vmean(@2$2..@4$2)::@5$3=vmean(@2$3..@4$3)
+
+#+name: figure1
+#+caption: \label{figure1} Figure with unemployment and gdp
+ [[./fig.png]]
+
+See Figure ref:figure1.
+
+
+* Conclusion
+
+
+
+* Bibliography
+
+
+bibliography:./references.bib
+
+
+
+
+@@latex:\newpage@@
+@@latex:\appendix@@
+
+
+* Things to install
+\label{sec:install}
+
+** latex
+
+Install latex: https://www.latex-project.org/get/
+
+
+
+** latex editor
+
+- winedt: https://www.winedt.com/
+- overleaf: https://www.overleaf.com/
+- texmaker: https://www.xm1math.net/texmaker/
+- tex studio: https://www.texstudio.org/
+
+More general editors where you can also edit latex:
+
+- atom: https://atom.io/
+  - and how to use with latex: https://towardsdatascience.com/setting-up-latex-on-your-atom-editor-7ea624571d50
+- vim: https://www.vim.org/docs.php
+
+
+   
+** git
+  
+install git: https://git-scm.com/downloads
 
 ** Emacs on Windows
-
-Probably this is hardest for windows (compared to linux and mac os); here is a video on how to install it on windows: https://www.youtube.com/watch?v=1VPHA2Lc2zQ&t=50s
 
 - go to: http://mirror.team-cymru.com/gnu/emacs/windows/emacs-27/
 - download emacs-27.2-x86_64-installer.exe to your Downloads folder: http://mirror.team-cymru.com/gnu/emacs/windows/emacs-27/emacs-27.2-x86_64-installer.exe
@@ -55,24 +144,31 @@ When you are using Linux, you probably know what you are doing. But just in case
 
 
 
-
+** org-mode
 
 When you install emacs, org-mode is installed as well (comes with emacs)
 
-https://systemcrafters.net/emacs-essentials/absolute-beginners-guide-to-emacs/
 
-video: https://www.youtube.com/watch?v=48JlgiBpw_I
+** introductions to emacs
+
+  It is easy to get lost in emacs. Hence do not try to use everything at once. A couple of basic things, you need from the start (like opening and saving files). For the other things: move step-by-step. 
+
+A great starting point, explaining key-bindings etc. is:
+- https://systemcrafters.net/emacs-essentials/absolute-beginners-guide-to-emacs/
+  - and the video that goes with it: https://www.youtube.com/watch?v=48JlgiBpw_I
+  - this explains things like "M-x", "C-c", "C-x" etc. which you can see when you use menu items like "file"
+    - to illustrate, use your mouse to click on "File" in the top left corner
+    - the first item is: "Visit New File... C-x C-f"
+    - you can click on this item to open a file; but you can also use the key combination C-x C-f which means: press Control (Ctrl) and x together; release these keys; then press Ctrl and f together. This allows you to open a file. If you type the name of a file that does not exist yet, this new file will be created
+    - you save a file with C-x C-s; hence you can quickly save a file by pressing these keys without having to reach for the mouse
+    - the emacs configuration below helps as it uses the which-key package. After typing C-x, it shows you what other keys you can use.
+
+
+https://www.youtube.com/playlist?list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg
 
 
 
 
-
-
-
-
-Install latex: https://www.latex-project.org/get/
-
-install git: https://git-scm.com/downloads
 
 
 ** basic configuration :noexport:
@@ -87,114 +183,113 @@ I use the font Source Code Pro which can be downloaded here: https://fonts.googl
 
 If you get an error running this code block that a package cannot be found, run =M-X package-refresh-contents=
 
+At the end of the code block I activate evil mode. You probably do not want to do that at the start as it can be a bit confusing. 
+
 
 #+begin_src emacs-lisp :tangle ./init.el
-	    (setq inhibit-startup-message t)
+      (setq inhibit-startup-message t)
+      (scroll-bar-mode -1)        ; Disable visible scrollbar
+      (tool-bar-mode -1)          ; Disable the toolbar
+      (tooltip-mode -1)           ; Disable tooltips
+      (set-fringe-mode 10)        ; Give some breathing room
+      (menu-bar-mode +1)            ; Disable the menu bar: use -1
+      (setq visible-bell t)
+      (set-face-attribute 'default nil :font "Source Code Pro" :height 260)
+      (load-theme 'leuven)
+      (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+      (require 'package)
+      (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+			       ("org" . "https://orgmode.org/elpa/")
+			       ("elpa" . "https://elpa.gnu.org/packages/")))
+      (package-initialize)
+      (unless package-archive-contents
+         (package-refresh-contents))
 
-	    (scroll-bar-mode -1)        ; Disable visible scrollbar
-	    (tool-bar-mode -1)          ; Disable the toolbar
-	    (tooltip-mode -1)           ; Disable tooltips
-	    (set-fringe-mode 10)        ; Give some breathing room
+      ;; Initialize use-package on non-Linux platforms
+      (unless (package-installed-p 'use-package)
+	 (package-install 'use-package))
 
-	    (menu-bar-mode +1)            ; Disable the menu bar: use -1
+      (require 'use-package)
+      (setq use-package-always-ensure t)
 
-	    ;; Set up the visible bell
-	    (setq visible-bell t)
+      (use-package command-log-mode)
+      (use-package ivy
+	:diminish
+	:bind (("C-s" . swiper)
+	       :map ivy-minibuffer-map
+	       ("TAB" . ivy-alt-done)	
+	       ("C-l" . ivy-alt-done)
+	       ("C-j" . ivy-next-line)
+	       ("C-k" . ivy-previous-line)
+	       :map ivy-switch-buffer-map
+	       ("C-k" . ivy-previous-line)
+	       ("C-l" . ivy-done)
+	       ("C-d" . ivy-switch-buffer-kill)
+	       :map ivy-reverse-i-search-map
+	       ("C-k" . ivy-previous-line)
+	       ("C-d" . ivy-reverse-i-search-kill))
+	:config
+	(ivy-mode 1))
 
-	    (set-face-attribute 'default nil :font "Source Code Pro" :height 280)
+      (use-package doom-modeline
+	:ensure t
+	:init (doom-modeline-mode 1)
+	:custom ((doom-modeline-height 5)))
 
-	    (load-theme 'leuven)
+    (setq org-confirm-babel-evaluate nil)
 
-	    ;; Make ESC quit prompts
-	    (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+    (use-package auctex
+      :defer t
+      :ensure t)
+    (use-package cdlatex
+      :ensure t)
+    (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+    (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+    (add-hook 'LaTeX-mode-hook 'cdlatex-mode)
+    (use-package org-ref)
+    (use-package magit)
+    (use-package ivy-bibtex)
+    (require 'org-ref-ivy)
+    (setq org-ref-insert-link-function 'org-ref-insert-link-hydra/body
+	  org-ref-insert-cite-function 'org-ref-cite-insert-ivy
+	  org-ref-insert-label-function 'org-ref-insert-label-link
+	  org-ref-insert-ref-function 'org-ref-insert-ref-link
+	  org-ref-cite-onclick-function (lambda (_) (org-ref-citation-hydra/body)))
+    (define-key org-mode-map (kbd "C-c )") 'org-ref-insert-ref-link)
+    (define-key org-mode-map (kbd "C-c ]") 'org-ref-insert-cite-link)
 
-	    ;; Initialize package sources
-	    (require 'package)
-
-	    (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-				     ("org" . "https://orgmode.org/elpa/")
-				     ("elpa" . "https://elpa.gnu.org/packages/")))
-
-	    (package-initialize)
-	    (unless package-archive-contents
-	     (package-refresh-contents))
-
-	    ;; Initialize use-package on non-Linux platforms
-	    (unless (package-installed-p 'use-package)
-	       (package-install 'use-package))
-
-	    (require 'use-package)
-	    (setq use-package-always-ensure t)
-
-	    (use-package command-log-mode)
-
-	    (use-package ivy
-	      :diminish
-	      :bind (("C-s" . swiper)
-		     :map ivy-minibuffer-map
-		     ("TAB" . ivy-alt-done)	
-		     ("C-l" . ivy-alt-done)
-		     ("C-j" . ivy-next-line)
-		     ("C-k" . ivy-previous-line)
-		     :map ivy-switch-buffer-map
-		     ("C-k" . ivy-previous-line)
-		     ("C-l" . ivy-done)
-		     ("C-d" . ivy-switch-buffer-kill)
-		     :map ivy-reverse-i-search-map
-		     ("C-k" . ivy-previous-line)
-		     ("C-d" . ivy-reverse-i-search-kill))
-	      :config
-	      (ivy-mode 1))
-
-	    (use-package doom-modeline
-	      :ensure t
-	      :init (doom-modeline-mode 1)
-	      :custom ((doom-modeline-height 10)))
-
-	  (setq org-confirm-babel-evaluate nil)
-
-	(use-package auctex
-	   :defer t
-	   :ensure t)
-
-	(use-package cdlatex
-	   :ensure t)
-
-	(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-	(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-	(add-hook 'LaTeX-mode-hook 'cdlatex-mode)
-
-      (use-package org-ref)
-      (use-package magit)
-(use-package ivy-bibtex)
-
-  (require 'org-ref-ivy)
-
-  (setq org-ref-insert-link-function 'org-ref-insert-link-hydra/body
-	org-ref-insert-cite-function 'org-ref-cite-insert-ivy
-	org-ref-insert-label-function 'org-ref-insert-label-link
-	org-ref-insert-ref-function 'org-ref-insert-ref-link
-	org-ref-cite-onclick-function (lambda (_) (org-ref-citation-hydra/body)))
+    (use-package which-key)
+    (which-key-mode)
+    (which-key-setup-side-window-bottom)
 
 
-    (define-key org-mode-map (kbd "C-c ]") 'org-ref-insert-link-hydra)
+
+
+
+  ;; Download Evil
+  (unless (package-installed-p 'evil)
+  (package-install 'evil))
+
+  ;; Enable Evil
+  (require 'evil)
+  (evil-mode 1) ;; use -1 to switch evil-mode off.
 
 #+end_src
 
 #+RESULTS:
-: org-ref-insert-link-hydra
+: t
 
 
 
 ** next steps
 
-   *** scimax
+*** scimax
 
    https://github.com/jkitchin/scimax
 
    youtube playlist with scimax features: https://www.youtube.com/playlist?list=PL0sMmOaE_gs3E0OjExoI7vlCAVygj6S4I
 
-   *** Doom
+*** Doom
 
    https://github.com/hlissner/doom-emacs
 
@@ -207,58 +302,6 @@ If you get an error running this code block that a package cannot be found, run 
 
 
 
-
-* Literature references
-
-
-  
-** org cite
-
-https://blog.tecosaur.com/tmio/2021-07-31-citations.html
-
-[cite:@athey-2019-machin-learn]
-
-
-
-
-** org-ref
-
-
-https://github.com/jkitchin/org-ref
-
-See [[cite:&armstrong-2007-chapt-coord]] for an analysis. We can also have references between brackets [[citep:&athey-2019-machin-learn]].
-
-
-* Model
-
-As we explained in section ref:sec:intro.
-
-Here we have some in-line math: $x^2$.[fn::This is a footnote.]
-
-\begin{equation}
-\label{eq:1}
-a^2 + b^2 = c^2
-\end{equation}
-
-As we show in equation eqref:eq:1.
-
-#+name: table1
-#+caption: This table shows unemployment and gdp per head.
-| country | unemployment |   gdp |
-|---------+--------------+-------|
-| NL      |         0.06 | 20000 |
-| UK      |         0.01 | 19500 |
-| BE      |         0.08 | 21100 |
-|---------+--------------+-------|
-| average |         0.05 | 20200 |
-#+TBLFM: @5$2=vmean(@2$2..@4$2)::@5$3=vmean(@2$3..@4$3)
-
-
-#+name: figure1
-#+caption: Figure with unemployment and gdp
- [[./fig.png]]
-
-See Figure ref:figure1.
 
 
 ** code :noexport:
@@ -302,21 +345,3 @@ See Figure ref:figure1.
 #+RESULTS:
 : None
 
-#+begin_src python
-
-#+end_src
-
-* Conclusion
-
-
-
-* Bibliography
-
-** org ref
-
-bibliography:./references.bib
-
-** org cite
-
-#+bibliography: references.bib
-#+print_bibliography:
