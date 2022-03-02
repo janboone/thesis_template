@@ -42,10 +42,10 @@
       :config
       (ivy-mode 1))
 
-    (use-package doom-modeline
-      :ensure t
-      :init (doom-modeline-mode 1)
-      :custom ((doom-modeline-height 5)))
+    ;; (use-package doom-modeline
+    ;;   :ensure t
+    ;;   :init (doom-modeline-mode 1)
+    ;;   :custom ((doom-modeline-height 5)))
 
   (setq org-confirm-babel-evaluate nil)
 

@@ -77,6 +77,30 @@ See Table ref:table1.
 
 See Figure ref:figure1.
 
+* What should your editor be able to do?
+
+** Basics
+   
+- type text...
+- work on different parts of the same file in a split window
+- help with syntax, e.g. by providing snippets for equations, environments etc.
+- short cuts e.g. for greek letters
+- operate on regions
+- operate on columns:
+  - delete columns in text
+  - copy and past columns
+  - add text in a column
+- add references to equations, sections, tables, figures
+- cite literature from a bibliography file
+- make it easy to add tables and edit tables (e.g. switch rows)
+- export to pdf
+
+** Advanced
+
+- combine code and latex
+- spreadsheet type capabilities
+- export to other formats, e.g. html
+- 
 
 * Conclusion
 
@@ -214,7 +238,7 @@ At the end of the code block I activate evil mode. You probably do not want to d
 			       ("elpa" . "https://elpa.gnu.org/packages/")))
       (package-initialize)
       (unless package-archive-contents
-         (package-refresh-contents))
+	 (package-refresh-contents))
 
       ;; Initialize use-package on non-Linux platforms
       (unless (package-installed-p 'use-package)
@@ -242,10 +266,10 @@ At the end of the code block I activate evil mode. You probably do not want to d
 	:config
 	(ivy-mode 1))
 
-      (use-package doom-modeline
-	:ensure t
-	:init (doom-modeline-mode 1)
-	:custom ((doom-modeline-height 5)))
+      ;; (use-package doom-modeline
+      ;;   :ensure t
+      ;;   :init (doom-modeline-mode 1)
+      ;;   :custom ((doom-modeline-height 5)))
 
     (setq org-confirm-babel-evaluate nil)
 
@@ -273,7 +297,7 @@ At the end of the code block I activate evil mode. You probably do not want to d
     (which-key-mode)
     (which-key-setup-side-window-bottom)
 
-
+    (use-package jupyter)
 
 
 
@@ -329,7 +353,7 @@ At the end of the code block I activate evil mode. You probably do not want to d
   (org-babel-do-load-languages 'org-babel-load-languages
 			       '((emacs-lisp . t)
 				 (python . t)
-				 ;;(jupyter . t)
+				 (jupyter . t)
 				 ))
 #+end_src
 
@@ -356,3 +380,16 @@ At the end of the code block I activate evil mode. You probably do not want to d
 #+RESULTS:
 : None
 
+[[./fig.png]]
+
+
+If you have installed anaconda, you can also use the jupyter kernel. If this does not work, the python code block above should work.
+
+
+#+begin_src jupyter-python
+  import numpy as np
+  np.arange(5)
+#+end_src
+
+#+RESULTS:
+: array([0, 1, 2, 3, 4])
