@@ -1,4 +1,4 @@
-% Created 2022-02-26 Sat 17:35
+% Created 2022-03-07 Mon 16:46
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -47,7 +47,7 @@ Running python code in this file only works in emacs org-mode; not in latex.
 
 
 \section{Introduction}
-\label{sec:org75302b8}
+\label{sec:orgbab533a}
 \label{sec:intro}
 
 This file shows you how to use \href{https://www.gnu.org/software/emacs/}{emacs} \href{https://orgmode.org/}{org mode} to write a thesis. Shows you how to cite references, make footnotes, equations etc.
@@ -56,11 +56,11 @@ Alternatively, you can use latex directly in which case you can consider the fil
 
 In order to use emacs, you need to install it. The official website's download information: \url{https://www.gnu.org/software/emacs/download.html}
 
-In Section \ref{sec:intro} we explain how emacs can be installed.
+In Section \ref{sec:install} we explain how emacs can be installed.
 
 
 \section{Literature references}
-\label{sec:org5dd2a3d}
+\label{sec:orgd785d69}
 
 There are a number of ways in which you can do literature citations in org-mode. We will work with org-ref:
 \begin{itemize}
@@ -73,9 +73,11 @@ If you use the \texttt{init.el} file for emacs, you can use the keys: C-c ] (pre
 
 
 \section{Model}
-\label{sec:org867adc8}
+\label{sec:orgf5f288e}
 
-As we explained in section \ref{sec:intro}.
+As we explained in section \ref{sec:intro}. This shows the syntax for a reference to a section, equation, table, figure etc. Type \texttt{ref:} and then the name of the label you are refering to. This can also be done with key strokes: C-c )
+
+A label is typed in latex format as: \texttt{\textbackslash{}label\{name\_of\_label\}}. For org-mode you need to add \texttt{\#+name: name\_of\_label} to tables and figures.
 
 Here we have some in-line math: \(x^2\).\footnote{This is a footnote.}
 
@@ -89,7 +91,7 @@ As we show in equation \eqref{eq:1}.
 See Table \ref{table1}.
 
 \begin{table}[htbp]
-\caption{\label{tab:org35712fb}\label{table1} This table shows unemployment and gdp per head.}
+\caption{\label{tab:org243fa81}\label{table1} This table shows unemployment and gdp per head.}
 \centering
 \begin{tabular}{lrr}
 country & unemployment & gdp\\
@@ -102,22 +104,182 @@ average & 0.05 & 20200\\
 \end{tabular}
 \end{table}
 
+Creating tables in org mode is a lot easier than in latex. Just type "|" name of column, another "|" name of second column, etc. end the line with "|", then press TAB.
+
+If you want a horizontal line, type "|----" and press TAB.
+
+In org mode (not in latex) you can add spreadsheet type calculations. See \url{https://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html} if you want to know more about this.
+
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./fig.png}
-\caption{\label{fig:org1a839e9}\label{figure1} Figure with unemployment and gdp}
+\caption{\label{fig:org5acee25}\label{figure1} Figure with unemployment and gdp}
 \end{figure}
 
 See Figure \ref{figure1}.
 
+\section{What should your editor be able to do?}
+\label{sec:org8b1c9fe}
+
+\subsection{Basics}
+\label{sec:org9488e8c}
+
+\begin{itemize}
+\item type text\ldots{}
+\item work on different parts of the same file in a split window
+\item help with syntax, e.g. by providing snippets for equations, environments etc.
+\begin{itemize}
+\item e.g. with org cdlatex mode: type "equ" and then TAB to get an equation environment
+\item ` a to get \(\alpha\)
+\end{itemize}
+\item operate on regions: e.g. for search and replace
+\item operate on columns:
+\begin{itemize}
+\item delete columns in text
+\item copy and past columns
+\item add text in a column
+\end{itemize}
+\item add references to equations, sections, tables, figures
+\item cite literature from a bibliography file
+\item make it easy to add tables and edit tables (e.g. switch rows)
+\item export to pdf
+\end{itemize}
+
+\subsection{Advanced}
+\label{sec:orgdf7019f}
+
+\begin{itemize}
+\item combine code and latex
+\item spreadsheet type capabilities
+\item export to other formats, e.g. html
+\end{itemize}
+
+
+\subsubsection{why do we want to operate on columns?}
+\label{sec:org531b277}
+
+Turn the table here: \url{http://fmwww.bc.edu/ec-p/data/oecd/oecd.ctylist.html} into a python dictionary:
+\begin{itemize}
+\item C-v and block the start of each line
+\item I and type '; then press ESC
+\item block at the end of the abbreviation with C-v
+\item type I and ' : '; then press ESC
+\item block spaces (tab) to delete
+\item block all lines with C-v
+\item type \$ A ',; then press ESC
+\item delete superfluous , at the end
+\item add \{\} to turn this into a dictionary
+\item a video on how to do this with regular emacs keybindings, can be found here: \url{https://www.youtube.com/watch?v=pcA5NeEudgU}
+\end{itemize}
+
+\begin{verbatim}
+dict = {
+'AUS' : 'Australia',
+'AUT' : 'Austria',
+'BEL' : 'Belgium',
+'CAN' : 'Canada',
+'CHE' : 'Switzerland',
+'DEU' : 'Germany',
+'DNK' : 'Denmark',
+'ESP' : 'Spain',
+'FIN' : 'Finland',
+'FRA' : 'France',
+'GBR' : 'Great Britain',
+'GRC' : 'Greece',
+'IRE' : 'Ireland',
+'ISL' : 'Iceland',
+'ITA' : 'Italy',
+'JPN' : 'Japan',
+'KOR' : 'South Korea',
+'LUX' : 'Luxemburg',
+'MEX' : 'Mexico',
+'NLD' : 'Netherlands',
+'NOR' : 'Norway',
+'NZL' : 'New Zealand',
+'PRT' : 'Portugal',
+'SWE' : 'Sweden',
+'TUR' : 'Turkey',
+'USA' : 'United States'}
+dict['NLD']
+\end{verbatim}
+
+Another trick we can use in org mode is to paste the table directly from the website:
+
+AUS 	Australia
+AUT 	Austria
+BEL 	Belgium
+CAN 	Canada
+CHE 	Switzerland
+DEU 	Germany
+DNK 	Denmark
+ESP 	Spain
+FIN 	Finland
+FRA 	France
+GBR 	Great Britain
+GRC 	Greece
+IRE 	Ireland
+ISL 	Iceland
+ITA 	Italy
+JPN 	Japan
+KOR 	South Korea
+LUX 	Luxemburg
+MEX 	Mexico
+NLD 	Netherlands
+NOR 	Norway
+NZL 	New Zealand
+PRT 	Portugal
+SWE 	Sweden
+TUR 	Turkey
+USA 	United States
+
+\begin{itemize}
+\item block the above table with Shift-V
+\item M-x org-table-create-or-convert-from-region
+\item and then add header with column names etc. to yield:
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{ll}
+abbrev. & country name\\
+\hline
+AUS & Australia\\
+AUT & Austria\\
+BEL & Belgium\\
+CAN & Canada\\
+CHE & Switzerland\\
+DEU & Germany\\
+DNK & Denmark\\
+ESP & Spain\\
+FIN & Finland\\
+FRA & France\\
+GBR & Great Britain\\
+GRC & Greece\\
+IRE & Ireland\\
+ISL & Iceland\\
+ITA & Italy\\
+JPN & Japan\\
+KOR & South Korea\\
+LUX & Luxemburg\\
+MEX & Mexico\\
+NLD & Netherlands\\
+NOR & Norway\\
+NZL & New Zealand\\
+PRT & Portugal\\
+SWE & Sweden\\
+TUR & Turkey\\
+USA & United States\\
+\end{tabular}
+\end{center}
+
 
 \section{Conclusion}
-\label{sec:org488ea8a}
+\label{sec:org8064eda}
 
-
+Here you can type the conclusion which is then followed by the bibliography.
 
 \section{Bibliography}
-\label{sec:org56e9727}
+\label{sec:org711c5e8}
 
 
 
@@ -134,18 +296,18 @@ See Figure \ref{figure1}.
 
 
 \section{Things to install}
-\label{sec:orgea6af2f}
+\label{sec:org77fa432}
 \label{sec:install}
 
 \subsection{latex}
-\label{sec:orgd31fa40}
+\label{sec:orgc7280e7}
 
 Install latex: \url{https://www.latex-project.org/get/}
 
 
 
-\subsection{latex editor}
-\label{sec:org97b6068}
+\subsection{latex editors if you do not want to use emacs}
+\label{sec:org913afe0}
 
 \begin{itemize}
 \item winedt: \url{https://www.winedt.com/}
@@ -165,14 +327,19 @@ More general editors where you can also edit latex:
 \end{itemize}
 
 
-
 \subsection{git}
-\label{sec:orgb0cccdd}
+\label{sec:orged07eba}
 
 install git: \url{https://git-scm.com/downloads}
 
-\subsection{Emacs on Windows}
-\label{sec:org8ef348d}
+\subsection{Emacs}
+\label{sec:org7a8a5fc}
+
+In the lecture I will illustrate what an editor can/should do using emacs.
+
+
+\subsubsection{Emacs on Windows}
+\label{sec:orgc43b2b5}
 
 \begin{itemize}
 \item go to: \url{http://mirror.team-cymru.com/gnu/emacs/windows/emacs-27/}
@@ -180,8 +347,8 @@ install git: \url{https://git-scm.com/downloads}
 \item run the downloaded \texttt{exe} file
 \end{itemize}
 
-\subsection{Emacs on Mac OS}
-\label{sec:org091dc2d}
+\subsubsection{Emacs on Mac OS}
+\label{sec:org028ce58}
 
 For Mac Os:
 \begin{itemize}
@@ -195,21 +362,20 @@ brew tap d12frosted/emacs-plus
 brew install emacs-plus
 \end{verbatim}
 
-\subsection{Emacs on Linux}
-\label{sec:org3ddf458}
+\subsubsection{Emacs on Linux}
+\label{sec:org71c0495}
 
 When you are using Linux, you probably know what you are doing. But just in case, the commands for your package manager can be found here: \url{https://www.gnu.org/software/emacs/download.html}
 
 
-
-\subsection{org-mode}
-\label{sec:org903ce05}
+\subsubsection{org-mode}
+\label{sec:org9bbf7d6}
 
 When you install emacs, org-mode is installed as well (comes with emacs)
 
 
 \subsection{introductions to emacs}
-\label{sec:orgae425b7}
+\label{sec:org545ac6b}
 
 It is easy to get lost in emacs. Hence do not try to use everything at once. A couple of basic things, you need from the start (like opening and saving files). For the other things: move step-by-step. 
 
@@ -229,33 +395,43 @@ A great starting point, explaining key-bindings etc. is:
 \end{itemize}
 \end{itemize}
 
-
-\url{https://www.youtube.com/playlist?list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg}
-
-
-
-
+There are other great introductions to emacs as well:
+\begin{itemize}
+\item \url{https://www.youtube.com/playlist?list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg}
+\item \url{https://www.youtube.com/playlist?list=PLwTHcico4iPMlBZPin6catRcUDzf7NNVs}
+\item or google emacs tutorial or emacs for beginners
+\item finally, emacs is self documenting: all information can be found in emacs as well, just type C-h i
+\begin{itemize}
+\item this gives information on emacs and all the packages you installed with emacs
+\end{itemize}
+\end{itemize}
 
 
 \subsection{next steps}
-\label{sec:org873adc7}
+\label{sec:orgf3c3a43}
+
+You can extend the configuration of emacs by yourself, e.g. by watching tutorials like: \url{https://www.youtube.com/playlist?list=PLEoMzSkcN8oNmd98m\_6FoaJseUsa6QGm2}
+
+Or you can use pre-configured emacs distributions like scimax and doom emacs.
+
 
 \subsubsection{scimax}
-\label{sec:orgc1042b1}
+\label{sec:orgdff1aaa}
 
-\url{https://github.com/jkitchin/scimax}
-
-youtube playlist with scimax features: \url{https://www.youtube.com/playlist?list=PL0sMmOaE\_gs3E0OjExoI7vlCAVygj6S4I}
+Scimax is developed for engineers, but works perfectly well for economists. More details can be found here:
+\begin{itemize}
+\item \url{https://github.com/jkitchin/scimax}
+\item youtube playlist with scimax features: \url{https://www.youtube.com/playlist?list=PL0sMmOaE\_gs3E0OjExoI7vlCAVygj6S4I}
+\end{itemize}
 
 \subsubsection{Doom}
-\label{sec:org02ee11b}
+\label{sec:org4ab38dd}
 
-\url{https://github.com/hlissner/doom-emacs}
-
-Doom emacs for noobs: \url{https://www.youtube.com/watch?v=iab2z21cRqA}
-
-Doom emacs getting started: \url{https://www.youtube.com/watch?v=dr\_iBj91eeI}
-
-
-youtube playlist: \url{https://www.youtube.com/playlist?list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj}
+Emacs has an absurd number of features and how do you choose the right ones if you do not know about them? Doom emacs has very reasonable default settings:
+\begin{itemize}
+\item \url{https://github.com/hlissner/doom-emacs}
+\item Doom emacs for noobs: \url{https://www.youtube.com/watch?v=iab2z21cRqA}
+\item Doom emacs getting started: \url{https://www.youtube.com/watch?v=dr\_iBj91eeI}
+\item youtube playlist: \url{https://www.youtube.com/playlist?list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj}
+\end{itemize}
 \end{document}
