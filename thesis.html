@@ -1,0 +1,985 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-03-10 Thu 15:56 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Thesis title</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Adam Smith" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Thesis title</h1>
+<div class="abstract" id="org992a589">
+<p>
+This document shows you the syntax to type your thesis in latex or org-mode. It illustrates how to make footnotes, tables, equations and references to tables, equations etc.
+</p>
+
+<p>
+If you want to work with latex only, look at the <code>.tex</code> file of this document. If you want to use emacs org-mode, then use the <code>.org</code> file. The pdf shows what the file looks like if you export it.
+</p>
+
+<p>
+Running python code in this file only works in emacs org-mode; not in latex.
+</p>
+
+</div>
+
+
+<p>
+<b>SNR:</b> 12345
+</p>
+
+<p>
+<b>ANR:</b> 98765
+</p>
+
+<p>
+<b>Supervisor:</b> Alfred Marshall
+</p>
+
+<p>
+<b>Second reader:</b> Karl Marx
+</p>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org086601a">1. Introduction</a></li>
+<li><a href="#org04799c9">2. Literature references</a></li>
+<li><a href="#org6dbbdcc">3. Model</a></li>
+<li><a href="#orgba2d204">4. What should your editor be able to do?</a>
+<ul>
+<li><a href="#org9e06112">4.1. Basics</a></li>
+<li><a href="#org35a6e19">4.2. Advanced</a></li>
+</ul>
+</li>
+<li><a href="#org01f4c0a">5. Conclusion</a></li>
+<li><a href="#org71a8b74">6. Bibliography</a></li>
+<li><a href="#orgea20dd4">7. Things to install</a>
+<ul>
+<li><a href="#org6478f03">7.1. latex</a></li>
+<li><a href="#orgf4517d0">7.2. latex editors if you do not want to use emacs</a></li>
+<li><a href="#org19c96f4">7.3. git</a></li>
+<li><a href="#orgab60581">7.4. Emacs</a></li>
+<li><a href="#orgc6c99a8">7.5. introductions to emacs</a></li>
+<li><a href="#orgb94aa9b">7.6. next steps</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org086601a" class="outline-2">
+<h2 id="org086601a"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+\label{sec:intro}
+</p>
+
+<p>
+This file shows you how to use <a href="https://www.gnu.org/software/emacs/">emacs</a> <a href="https://orgmode.org/">org mode</a> to write a thesis. Shows you how to cite references, make footnotes, equations etc.
+</p>
+
+<p>
+Alternatively, you can use latex directly in which case you can consider the file in this repository that ends in <code>.tex</code>.
+</p>
+
+<p>
+In order to use emacs, you need to install it. The official website's download information: <a href="https://www.gnu.org/software/emacs/download.html">https://www.gnu.org/software/emacs/download.html</a>
+</p>
+
+<p>
+In Section <a href="sec:install">sec:install</a> we explain how emacs can be installed.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org04799c9" class="outline-2">
+<h2 id="org04799c9"><span class="section-number-2">2</span> Literature references</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+There are a number of ways in which you can do literature citations in org-mode. We will work with org-ref:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/jkitchin/org-ref">https://github.com/jkitchin/org-ref</a></li>
+</ul>
+
+<p>
+The syntax for including references is as follows. See Farrell and Klemperer <a href="#citeproc_bib_item_2">2007</a> for an analysis. We can also have references between brackets (<a href="#citeproc_bib_item_1">Athey and Imbens 2019</a>): that is, <code>citep</code> instead of <code>citet</code>. <code>armstrong-2007-chapt-coord</code> is the bibtex key, as you can see in the file <code>references.bib</code>.
+</p>
+
+<p>
+If you use the <code>init.el</code> file for emacs, you can use the keys: C-c ] (press control (Ctrl) and c together; release these keys and then press the ]-key). The bottom part of the screen then gives you possible papers to cite from your <code>references.bib</code> file.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org6dbbdcc" class="outline-2">
+<h2 id="org6dbbdcc"><span class="section-number-2">3</span> Model</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+As we explained in section <a href="sec:intro">sec:intro</a>. This shows the syntax for a reference to a section, equation, table, figure etc. Type <code>ref:</code> and then the name of the label you are refering to. This can also be done with key strokes: C-c )
+</p>
+
+<p>
+A label is typed in latex format as: <code>\label{name_of_label}</code>. For org-mode you need to add <code>#+name: name_of_label</code> to tables and figures.
+</p>
+
+<p>
+Here we have some in-line math: \(x^2\).<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</p>
+
+\begin{equation}
+\label{eq:1}
+a^2 + b^2 = c^2
+\end{equation}
+
+<p>
+As we show in equation <a href="eq:1">eq:1</a>.
+</p>
+
+<p>
+See Table <a href="table1">table1</a>.
+</p>
+
+<table id="orgc55dc62" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> \label{table1} This table shows unemployment and gdp per head.</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">country</th>
+<th scope="col" class="org-right">unemployment</th>
+<th scope="col" class="org-right">gdp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">NL</td>
+<td class="org-right">0.06</td>
+<td class="org-right">20000</td>
+</tr>
+
+<tr>
+<td class="org-left">UK</td>
+<td class="org-right">0.01</td>
+<td class="org-right">19500</td>
+</tr>
+
+<tr>
+<td class="org-left">BE</td>
+<td class="org-right">0.08</td>
+<td class="org-right">21100</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">average</td>
+<td class="org-right">0.05</td>
+<td class="org-right">20200</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Creating tables in org mode is a lot easier than in latex. Just type "|" name of column, another "|" name of second column, etc. end the line with "|", then press TAB.
+</p>
+
+<p>
+If you want a horizontal line, type "|-&#x2014;" and press TAB.
+</p>
+
+<p>
+In org mode (not in latex) you can add spreadsheet type calculations. See <a href="https://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html">https://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html</a> if you want to know more about this.
+</p>
+
+
+
+<div id="org76f9e1d" class="figure">
+<p><img src="./fig.png" alt="fig.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>\label{figure1} Figure with unemployment and gdp</p>
+</div>
+
+<p>
+See Figure <a href="figure1">figure1</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgba2d204" class="outline-2">
+<h2 id="orgba2d204"><span class="section-number-2">4</span> What should your editor be able to do?</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org9e06112" class="outline-3">
+<h3 id="org9e06112"><span class="section-number-3">4.1</span> Basics</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>type text&#x2026;</li>
+<li>work on different parts of the same file in a split window</li>
+<li>help with syntax, e.g. by providing snippets for equations, environments etc.
+<ul class="org-ul">
+<li>e.g. with org cdlatex mode: type "equ" and then TAB to get an equation environment</li>
+<li>` a to get \(\alpha\)</li>
+</ul></li>
+<li>operate on regions: e.g. for search and replace</li>
+<li>operate on columns:
+<ul class="org-ul">
+<li>delete columns in text</li>
+<li>copy and past columns</li>
+<li>add text in a column</li>
+</ul></li>
+<li>add references to equations, sections, tables, figures</li>
+<li>cite literature from a bibliography file</li>
+<li>make it easy to add tables and edit tables (e.g. switch rows)</li>
+<li>export to pdf</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org35a6e19" class="outline-3">
+<h3 id="org35a6e19"><span class="section-number-3">4.2</span> Advanced</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>combine code and latex</li>
+<li>spreadsheet type capabilities</li>
+<li>export to other formats, e.g. html</li>
+</ul>
+</div>
+
+
+<div id="outline-container-org48a31d8" class="outline-4">
+<h4 id="org48a31d8"><span class="section-number-4">4.2.1</span> why do we want to operate on columns?</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<p>
+Turn the table here: <a href="http://fmwww.bc.edu/ec-p/data/oecd/oecd.ctylist.html">http://fmwww.bc.edu/ec-p/data/oecd/oecd.ctylist.html</a> into a python dictionary:
+</p>
+<ul class="org-ul">
+<li>C-v and block the start of each line</li>
+<li>I and type '; then press ESC</li>
+<li>block at the end of the abbreviation with C-v</li>
+<li>type I and ' : '; then press ESC</li>
+<li>block spaces (tab) to delete</li>
+<li>block all lines with C-v</li>
+<li>type $ A ',; then press ESC</li>
+<li>delete superfluous , at the end</li>
+<li>add {} to turn this into a dictionary</li>
+<li>a video on how to do this with regular emacs keybindings, can be found here: <a href="https://www.youtube.com/watch?v=pcA5NeEudgU">https://www.youtube.com/watch?v=pcA5NeEudgU</a></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #006FE0;">dict</span> = {
+<span style="color: #008000;">'AUS'</span> : <span style="color: #008000;">'Australia'</span>,
+<span style="color: #008000;">'AUT'</span> : <span style="color: #008000;">'Austria'</span>,
+<span style="color: #008000;">'BEL'</span> : <span style="color: #008000;">'Belgium'</span>,
+<span style="color: #008000;">'CAN'</span> : <span style="color: #008000;">'Canada'</span>,
+<span style="color: #008000;">'CHE'</span> : <span style="color: #008000;">'Switzerland'</span>,
+<span style="color: #008000;">'DEU'</span> : <span style="color: #008000;">'Germany'</span>,
+<span style="color: #008000;">'DNK'</span> : <span style="color: #008000;">'Denmark'</span>,
+<span style="color: #008000;">'ESP'</span> : <span style="color: #008000;">'Spain'</span>,
+<span style="color: #008000;">'FIN'</span> : <span style="color: #008000;">'Finland'</span>,
+<span style="color: #008000;">'FRA'</span> : <span style="color: #008000;">'France'</span>,
+<span style="color: #008000;">'GBR'</span> : <span style="color: #008000;">'Great Britain'</span>,
+<span style="color: #008000;">'GRC'</span> : <span style="color: #008000;">'Greece'</span>,
+<span style="color: #008000;">'IRE'</span> : <span style="color: #008000;">'Ireland'</span>,
+<span style="color: #008000;">'ISL'</span> : <span style="color: #008000;">'Iceland'</span>,
+<span style="color: #008000;">'ITA'</span> : <span style="color: #008000;">'Italy'</span>,
+<span style="color: #008000;">'JPN'</span> : <span style="color: #008000;">'Japan'</span>,
+<span style="color: #008000;">'KOR'</span> : <span style="color: #008000;">'South Korea'</span>,
+<span style="color: #008000;">'LUX'</span> : <span style="color: #008000;">'Luxemburg'</span>,
+<span style="color: #008000;">'MEX'</span> : <span style="color: #008000;">'Mexico'</span>,
+<span style="color: #008000;">'NLD'</span> : <span style="color: #008000;">'Netherlands'</span>,
+<span style="color: #008000;">'NOR'</span> : <span style="color: #008000;">'Norway'</span>,
+<span style="color: #008000;">'NZL'</span> : <span style="color: #008000;">'New Zealand'</span>,
+<span style="color: #008000;">'PRT'</span> : <span style="color: #008000;">'Portugal'</span>,
+<span style="color: #008000;">'SWE'</span> : <span style="color: #008000;">'Sweden'</span>,
+<span style="color: #008000;">'TUR'</span> : <span style="color: #008000;">'Turkey'</span>,
+<span style="color: #008000;">'USA'</span> : <span style="color: #008000;">'United States'</span>}
+<span style="color: #006FE0;">dict</span>[<span style="color: #008000;">'NLD'</span>]
+</pre>
+</div>
+
+<pre class="example">
+Netherlands
+</pre>
+
+
+<p>
+Another trick we can use in org mode is to paste the table directly from the website:
+</p>
+
+<p>
+AUS 	Australia
+AUT 	Austria
+BEL 	Belgium
+CAN 	Canada
+CHE 	Switzerland
+DEU 	Germany
+DNK 	Denmark
+ESP 	Spain
+FIN 	Finland
+FRA 	France
+GBR 	Great Britain
+GRC 	Greece
+IRE 	Ireland
+ISL 	Iceland
+ITA 	Italy
+JPN 	Japan
+KOR 	South Korea
+LUX 	Luxemburg
+MEX 	Mexico
+NLD 	Netherlands
+NOR 	Norway
+NZL 	New Zealand
+PRT 	Portugal
+SWE 	Sweden
+TUR 	Turkey
+USA 	United States
+</p>
+
+<ul class="org-ul">
+<li>block the above table with Shift-V</li>
+<li>M-x org-table-create-or-convert-from-region</li>
+<li>and then add header with column names etc. to yield:</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">abbrev.</th>
+<th scope="col" class="org-left">country name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">AUS</td>
+<td class="org-left">Australia</td>
+</tr>
+
+<tr>
+<td class="org-left">AUT</td>
+<td class="org-left">Austria</td>
+</tr>
+
+<tr>
+<td class="org-left">BEL</td>
+<td class="org-left">Belgium</td>
+</tr>
+
+<tr>
+<td class="org-left">CAN</td>
+<td class="org-left">Canada</td>
+</tr>
+
+<tr>
+<td class="org-left">CHE</td>
+<td class="org-left">Switzerland</td>
+</tr>
+
+<tr>
+<td class="org-left">DEU</td>
+<td class="org-left">Germany</td>
+</tr>
+
+<tr>
+<td class="org-left">DNK</td>
+<td class="org-left">Denmark</td>
+</tr>
+
+<tr>
+<td class="org-left">ESP</td>
+<td class="org-left">Spain</td>
+</tr>
+
+<tr>
+<td class="org-left">FIN</td>
+<td class="org-left">Finland</td>
+</tr>
+
+<tr>
+<td class="org-left">FRA</td>
+<td class="org-left">France</td>
+</tr>
+
+<tr>
+<td class="org-left">GBR</td>
+<td class="org-left">Great Britain</td>
+</tr>
+
+<tr>
+<td class="org-left">GRC</td>
+<td class="org-left">Greece</td>
+</tr>
+
+<tr>
+<td class="org-left">IRE</td>
+<td class="org-left">Ireland</td>
+</tr>
+
+<tr>
+<td class="org-left">ISL</td>
+<td class="org-left">Iceland</td>
+</tr>
+
+<tr>
+<td class="org-left">ITA</td>
+<td class="org-left">Italy</td>
+</tr>
+
+<tr>
+<td class="org-left">JPN</td>
+<td class="org-left">Japan</td>
+</tr>
+
+<tr>
+<td class="org-left">KOR</td>
+<td class="org-left">South Korea</td>
+</tr>
+
+<tr>
+<td class="org-left">LUX</td>
+<td class="org-left">Luxemburg</td>
+</tr>
+
+<tr>
+<td class="org-left">MEX</td>
+<td class="org-left">Mexico</td>
+</tr>
+
+<tr>
+<td class="org-left">NLD</td>
+<td class="org-left">Netherlands</td>
+</tr>
+
+<tr>
+<td class="org-left">NOR</td>
+<td class="org-left">Norway</td>
+</tr>
+
+<tr>
+<td class="org-left">NZL</td>
+<td class="org-left">New Zealand</td>
+</tr>
+
+<tr>
+<td class="org-left">PRT</td>
+<td class="org-left">Portugal</td>
+</tr>
+
+<tr>
+<td class="org-left">SWE</td>
+<td class="org-left">Sweden</td>
+</tr>
+
+<tr>
+<td class="org-left">TUR</td>
+<td class="org-left">Turkey</td>
+</tr>
+
+<tr>
+<td class="org-left">USA</td>
+<td class="org-left">United States</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org01f4c0a" class="outline-2">
+<h2 id="org01f4c0a"><span class="section-number-2">5</span> Conclusion</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Here you can type the conclusion which is then followed by the bibliography.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org71a8b74" class="outline-2">
+<h2 id="org71a8b74"><span class="section-number-2">6</span> Bibliography</h2>
+<div class="outline-text-2" id="text-6">
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Athey, Susan, and Guido W. Imbens. 2019. “Machine Learning Methods That Economists Should Know About.” <i>Annual Review of Economics</i> 11 (1): 685–725. doi:<a href="https://doi.org/10.1146/annurev-economics-080217-053433">10.1146/annurev-economics-080217-053433</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Farrell, Joseph, and Paul Klemperer. 2007. “Chapter 31 Coordination and Lock-in: Competition with Switching Costs and Network Effects,” edited by M. Armstrong and R. Porter, 3:1967–2072. Handbook of Industrial Organization, Supplement C. Elsevier. doi:<a href="https://doi.org/10.1016/S1573-448X(06)03031-7">10.1016/S1573-448X(06)03031-7</a>.</div>
+</div>
+
+
+
+
+
+<p>
+
+
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgea20dd4" class="outline-2">
+<h2 id="orgea20dd4"><span class="section-number-2">7</span> Things to install</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+\label{sec:install}
+</p>
+</div>
+
+<div id="outline-container-org6478f03" class="outline-3">
+<h3 id="org6478f03"><span class="section-number-3">7.1</span> latex</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+Install latex: <a href="https://www.latex-project.org/get/">https://www.latex-project.org/get/</a>
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgf4517d0" class="outline-3">
+<h3 id="orgf4517d0"><span class="section-number-3">7.2</span> latex editors if you do not want to use emacs</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>winedt: <a href="https://www.winedt.com/">https://www.winedt.com/</a></li>
+<li>overleaf: <a href="https://www.overleaf.com/">https://www.overleaf.com/</a></li>
+<li>texmaker: <a href="https://www.xm1math.net/texmaker/">https://www.xm1math.net/texmaker/</a></li>
+<li>tex studio: <a href="https://www.texstudio.org/">https://www.texstudio.org/</a></li>
+</ul>
+
+<p>
+More general editors where you can also edit latex:
+</p>
+
+<ul class="org-ul">
+<li>atom: <a href="https://atom.io/">https://atom.io/</a>
+<ul class="org-ul">
+<li>and how to use with latex: <a href="https://towardsdatascience.com/setting-up-latex-on-your-atom-editor-7ea624571d50">https://towardsdatascience.com/setting-up-latex-on-your-atom-editor-7ea624571d50</a></li>
+</ul></li>
+<li>vim: <a href="https://www.vim.org/docs.php">https://www.vim.org/docs.php</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org19c96f4" class="outline-3">
+<h3 id="org19c96f4"><span class="section-number-3">7.3</span> git</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+install git: <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgab60581" class="outline-3">
+<h3 id="orgab60581"><span class="section-number-3">7.4</span> Emacs</h3>
+<div class="outline-text-3" id="text-7-4">
+<p>
+In the lecture I will illustrate what an editor can/should do using emacs.
+</p>
+</div>
+
+
+<div id="outline-container-orgb57f8b7" class="outline-4">
+<h4 id="orgb57f8b7"><span class="section-number-4">7.4.1</span> Emacs on Windows</h4>
+<div class="outline-text-4" id="text-7-4-1">
+<ul class="org-ul">
+<li>go to: <a href="http://mirror.team-cymru.com/gnu/emacs/windows/emacs-27/">http://mirror.team-cymru.com/gnu/emacs/windows/emacs-27/</a></li>
+<li>download emacs-27.2-x86<sub>64</sub>-installer.exe to your Downloads folder: <a href="http://mirror.team-cymru.com/gnu/emacs/windows/emacs-27/emacs-27.2-x86_64-installer.exe">http://mirror.team-cymru.com/gnu/emacs/windows/emacs-27/emacs-27.2-x86_64-installer.exe</a></li>
+<li>run the downloaded <code>exe</code> file</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org083cf90" class="outline-4">
+<h4 id="org083cf90"><span class="section-number-4">7.4.2</span> Emacs on Mac OS</h4>
+<div class="outline-text-4" id="text-7-4-2">
+<p>
+For Mac Os:
+</p>
+<ul class="org-ul">
+<li>install homebrew: <a href="https://brew.sh/">https://brew.sh/</a></li>
+</ul>
+
+<p>
+Open a terminal and type the following lines:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">brew tap d12frosted/emacs-plus
+brew install emacs-plus
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf3682c3" class="outline-4">
+<h4 id="orgf3682c3"><span class="section-number-4">7.4.3</span> Emacs on Linux</h4>
+<div class="outline-text-4" id="text-7-4-3">
+<p>
+When you are using Linux, you probably know what you are doing. But just in case, the commands for your package manager can be found here: <a href="https://www.gnu.org/software/emacs/download.html">https://www.gnu.org/software/emacs/download.html</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org9c1f3bd" class="outline-4">
+<h4 id="org9c1f3bd"><span class="section-number-4">7.4.4</span> org-mode</h4>
+<div class="outline-text-4" id="text-7-4-4">
+<p>
+When you install emacs, org-mode is installed as well (comes with emacs)
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgc6c99a8" class="outline-3">
+<h3 id="orgc6c99a8"><span class="section-number-3">7.5</span> introductions to emacs</h3>
+<div class="outline-text-3" id="text-7-5">
+<p>
+It is easy to get lost in emacs. Hence do not try to use everything at once. A couple of basic things, you need from the start (like opening and saving files). For the other things: move step-by-step. 
+</p>
+
+<p>
+A great starting point, explaining key-bindings etc. is:
+</p>
+<ul class="org-ul">
+<li><a href="https://systemcrafters.net/emacs-essentials/absolute-beginners-guide-to-emacs/">https://systemcrafters.net/emacs-essentials/absolute-beginners-guide-to-emacs/</a>
+<ul class="org-ul">
+<li>and the video that goes with it: <a href="https://www.youtube.com/watch?v=48JlgiBpw_I">https://www.youtube.com/watch?v=48JlgiBpw_I</a></li>
+<li>this explains things like "M-x", "C-c", "C-x" etc. which you can see when you use menu items like "file"
+<ul class="org-ul">
+<li>to illustrate, use your mouse to click on "File" in the top left corner</li>
+<li>the first item is: "Visit New File&#x2026; C-x C-f"</li>
+<li>you can click on this item to open a file; but you can also use the key combination C-x C-f which means: press Control (Ctrl) and x together; release these keys; then press Ctrl and f together. This allows you to open a file. If you type the name of a file that does not exist yet, this new file will be created</li>
+<li>you save a file with C-x C-s; hence you can quickly save a file by pressing these keys without having to reach for the mouse</li>
+<li>the emacs configuration below helps as it uses the which-key package. After typing C-x, it shows you what other keys you can use.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>
+There are other great introductions to emacs as well:
+</p>
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/playlist?list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg">https://www.youtube.com/playlist?list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLwTHcico4iPMlBZPin6catRcUDzf7NNVs">https://www.youtube.com/playlist?list=PLwTHcico4iPMlBZPin6catRcUDzf7NNVs</a></li>
+<li>or google emacs tutorial or emacs for beginners</li>
+<li>finally, emacs is self documenting: all information can be found in emacs as well, just type C-h i
+<ul class="org-ul">
+<li>this gives information on emacs and all the packages you installed with emacs</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgb94aa9b" class="outline-3">
+<h3 id="orgb94aa9b"><span class="section-number-3">7.6</span> next steps</h3>
+<div class="outline-text-3" id="text-7-6">
+<p>
+You can extend the configuration of emacs by yourself, e.g. by watching tutorials like: <a href="https://www.youtube.com/playlist?list=PLEoMzSkcN8oNmd98m_6FoaJseUsa6QGm2">https://www.youtube.com/playlist?list=PLEoMzSkcN8oNmd98m_6FoaJseUsa6QGm2</a>
+</p>
+
+<p>
+Or you can use pre-configured emacs distributions like scimax and doom emacs.
+</p>
+</div>
+
+
+<div id="outline-container-orgd9e618f" class="outline-4">
+<h4 id="orgd9e618f"><span class="section-number-4">7.6.1</span> scimax</h4>
+<div class="outline-text-4" id="text-7-6-1">
+<p>
+Scimax is developed for engineers, but works perfectly well for economists. More details can be found here:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/jkitchin/scimax">https://github.com/jkitchin/scimax</a></li>
+<li>youtube playlist with scimax features: <a href="https://www.youtube.com/playlist?list=PL0sMmOaE_gs3E0OjExoI7vlCAVygj6S4I">https://www.youtube.com/playlist?list=PL0sMmOaE_gs3E0OjExoI7vlCAVygj6S4I</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org583ec88" class="outline-4">
+<h4 id="org583ec88"><span class="section-number-4">7.6.2</span> Doom</h4>
+<div class="outline-text-4" id="text-7-6-2">
+<p>
+Emacs has an absurd number of features and how do you choose the right ones if you do not know about them? Doom emacs has very reasonable default settings:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/hlissner/doom-emacs">https://github.com/hlissner/doom-emacs</a></li>
+<li>Doom emacs for noobs: <a href="https://www.youtube.com/watch?v=iab2z21cRqA">https://www.youtube.com/watch?v=iab2z21cRqA</a></li>
+<li>Doom emacs getting started: <a href="https://www.youtube.com/watch?v=dr_iBj91eeI">https://www.youtube.com/watch?v=dr_iBj91eeI</a></li>
+<li>youtube playlist: <a href="https://www.youtube.com/playlist?list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj">https://www.youtube.com/playlist?list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">This is a footnote.</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Adam Smith</p>
+<p class="date">Created: 2022-03-10 Thu 15:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
