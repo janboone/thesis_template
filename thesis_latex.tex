@@ -65,21 +65,31 @@ Running python code in this file only works in emacs org-mode; not in latex.
 \section{Introduction}
 \label{sec:intro}
 
-This file shows you how to use \href{https://www.gnu.org/software/emacs/}{emacs} \href{https://orgmode.org/}{org mode} to write a thesis; shows you how to cite references, make footnotes, equations etc.
-
-Alternatively, you can use latex directly in which case you can consider the file in this repository that ends in \texttt{.tex}.
+This file shows you how to use \href{https://www.gnu.org/software/emacs/}{emacs} with latex to write a thesis; shows you how to cite references, make footnotes, equations etc.
 
 In order to use emacs, you need to install it. In Appendix \ref{sec:install} we explain how emacs can be installed.
+
+By default you are in ``evil mode''; that is, modal editing.
+
+\begin{itemize}
+\item Use the h, j, k and l keys to move around
+\item if you want to type something, press the i key (``i'' for insert)
+\item If you do not like modal editing, press M-x turn-off-evil-mode
+\item In emacs M-x means: press the alt-key and the x-key together
+\end{itemize}
 
 
 \section{Literature references}
 
-There are a number of ways in which you can do literature citations in org-mode. We will work with org-ref:
+There are a number of ways in which you can do literature citations in org-mode. We will work with reftex:
 \begin{itemize}
-\item \url{https://github.com/jkitchin/org-ref}
+\item \url{https://www.gnu.org/software/auctex/reftex.html}
+\item to include a reference, type C-c [
+\item where in emacs C-c means: press the control-key and c-key together
+\item to get a TOC for your file: C-c =
 \end{itemize}
-
 The syntax for including references is as follows. See \citet{armstrong-2007-chapt-coord} for an analysis. We can also have references between brackets \citep{athey-2019-machin-learn}: that is, \texttt{citep} instead of \texttt{citet}. \texttt{armstrong-2007-chapt-coord} is the bibtex key, as you can see in the file \texttt{references.bib}.
+
 
 An entry in a bib-tex file looks as follows:
 
@@ -103,14 +113,14 @@ An entry in a bib-tex file looks as follows:
 
 To cite this paper, we type \cite{prager-2021-employ-consol-wages}.
 
-If you use the \texttt{init.el} file for emacs, you can use the keys: C-c ] (press control (Ctrl) and c together; release these keys and then press the ]-key). The bottom part of the screen then gives you possible papers to cite from your \texttt{references.bib} file.
+If you use the \texttt{init.el} file for emacs, you can use the keys: C-c [ (press control (Ctrl) and c together; release these keys and then press the [-key). 
 
 
 \section{References to sections, equations, tables etc.}
 
 As we explained in Section \ref{sec:intro}. The previous sentence shows the syntax for a reference to a section, equation, table, figure etc. Type \texttt{ref:} and then the name of the label you are refering to. This can also be done with key strokes: C-c )
 
-A label is typed in latex format as: \texttt{\textbackslash{}label\{name\_of\_label\}}. For org-mode you need to add \texttt{\#+name: name\_of\_label} to tables and figures.
+A label is typed in latex format as: \texttt{\textbackslash{}label\{name\_of\_label\}}. 
 
 Here we have some in-line math: \(x^2\).\footnote{\label{fn:footnote} This is a footnote.}
 
@@ -122,7 +132,9 @@ As you can see in footnote \ref{fn:footnote}; you can also refer to footnotes.
 a^2 + b^2 = c^2
 \end{equation}
 
-As we show in equation \eqref{eq:1}.
+If you want to preview your math: use the preview-menu above or type C-c C-p C-b
+
+As we show in equation (\ref{eq:1}).
 
 See Table \ref{table1}.
 
@@ -140,11 +152,7 @@ average & 0.05 & 20200\\
 \end{tabular}
 \end{table}
 
-Creating tables in org mode is a lot easier than in latex. Just type "|" name of column, another "|" name of second column, etc. end the line with "|", then press TAB.
-
-If you want a horizontal line, type "|----" and press TAB.
-
-In org mode (not in latex) you can add spreadsheet type calculations. See \url{https://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html} if you want to know more about this.
+In org mode (not in latex) you can add spreadsheet type calculations to your tables. See \url{https://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html} if you want to know more about this.
 
 In latex this table looks as follows:
 
@@ -166,7 +174,7 @@ average & 0.05 & 20200\\
 
 \end{verbatim}
 
-The following figure we will generate with python code in the appendix using the data in Table \ref{table1}.
+The following figure we can generate with python code in org-mode; not in latex (see the appendix using the data in Table \ref{table1}).
 
 \begin{figure}[htbp]
 \centering
@@ -179,12 +187,13 @@ See Figure \ref{figure1} is the way you can refer to a figure.
 \section{What should your editor be able to do?}
 
 
+
 \subsection{Basics}
 
 \begin{itemize}
 \item type text\ldots{}
 \begin{itemize}
-\item consider whether you want to use model editing
+\item consider whether you want to use modal editing
 \end{itemize}
 \item work on different parts of the same file in a split window
 \item help with syntax, e.g. by providing snippets for equations, environments etc.
@@ -203,6 +212,7 @@ See Figure \ref{figure1} is the way you can refer to a figure.
 \item cite literature from a bibliography file
 \item make it easy to add tables and edit tables (e.g. switch rows)
 \item export to pdf
+\item export to html (possible with an org-file; not with latex file)
 \end{itemize}
 
 
@@ -223,129 +233,34 @@ See Figure \ref{figure1} is the way you can refer to a figure.
 \begin{itemize}
 \item combine code and latex
 \item spreadsheet type capabilities
-\item export to other formats, e.g. html
 \end{itemize}
 
+The derivative of the function $f(x) = x^2 + 3x +10$ is $f(x) = x^2 + 3 x + 10$
 
-\subsubsection{more realistic column operations}
-
-Turn the table here: \url{http://fmwww.bc.edu/ec-p/data/oecd/oecd.ctylist.html} into a python dictionary:
 \begin{itemize}
+\item put your cursor in the second equation $f(x)=...$
+\item M-x calc-embedded
+\item press a and d
+\item give x as the variable and press Enter
+\item emacs gives you the derivative
+\end{itemize}
+
+\subsubsection{column operations}
+
+Make the following lines, itemized in latex:
+
+\begin{verbatim}
+apples
+oranges
+bananas
+\end{verbatim}
+
+\begin{itemize}
+\item type begin itemize at the top
+\item use C-c ] at the end
 \item C-v and block the start of each line
-\item I and type '; then press ESC
-\item block at the end of the abbreviation with C-v
-\item type I and ' : '; then press ESC
-\item block spaces (tab) to delete
-\item block all lines with C-v
-\item type \$ A ',; then press ESC
-\item delete superfluous , at the end
-\item add \{\} to turn this into a dictionary
-\item a video on how to do this with regular emacs keybindings, can be found here: \url{https://www.youtube.com/watch?v=pcA5NeEudgU}
+\item I and type ``\\item '' then press ESC
 \end{itemize}
-
-\begin{verbatim}
-dict = {
-'AUS' : 'Australia',
-'AUT' : 'Austria',
-'BEL' : 'Belgium',
-'CAN' : 'Canada',
-'CHE' : 'Switzerland',
-'DEU' : 'Germany',
-'DNK' : 'Denmark',
-'ESP' : 'Spain',
-'FIN' : 'Finland',
-'FRA' : 'France',
-'GBR' : 'Great Britain',
-'GRC' : 'Greece',
-'IRE' : 'Ireland',
-'ISL' : 'Iceland',
-'ITA' : 'Italy',
-'JPN' : 'Japan',
-'KOR' : 'South Korea',
-'LUX' : 'Luxemburg',
-'MEX' : 'Mexico',
-'NLD' : 'Netherlands',
-'NOR' : 'Norway',
-'NZL' : 'New Zealand',
-'PRT' : 'Portugal',
-'SWE' : 'Sweden',
-'TUR' : 'Turkey',
-'USA' : 'United States'}
-dict['NLD']
-\end{verbatim}
-
-\begin{verbatim}
-Netherlands
-\end{verbatim}
-
-
-Another trick we can use in org mode is to paste the table directly from the website:
-
-AUS 	Australia
-AUT 	Austria
-BEL 	Belgium
-CAN 	Canada
-CHE 	Switzerland
-DEU 	Germany
-DNK 	Denmark
-ESP 	Spain
-FIN 	Finland
-FRA 	France
-GBR 	Great Britain
-GRC 	Greece
-IRE 	Ireland
-ISL 	Iceland
-ITA 	Italy
-JPN 	Japan
-KOR 	South Korea
-LUX 	Luxemburg
-MEX 	Mexico
-NLD 	Netherlands
-NOR 	Norway
-NZL 	New Zealand
-PRT 	Portugal
-SWE 	Sweden
-TUR 	Turkey
-USA 	United States
-
-\begin{itemize}
-\item block the above table with Shift-V
-\item M-x org-table-create-or-convert-from-region
-\item and then add header with column names etc. to yield:
-\end{itemize}
-
-\begin{center}
-\begin{tabular}{ll}
-abbrev. & country name\\
-\hline
-AUS & Australia\\
-AUT & Austria\\
-BEL & Belgium\\
-CAN & Canada\\
-CHE & Switzerland\\
-DEU & Germany\\
-DNK & Denmark\\
-ESP & Spain\\
-FIN & Finland\\
-FRA & France\\
-GBR & Great Britain\\
-GRC & Greece\\
-IRE & Ireland\\
-ISL & Iceland\\
-ITA & Italy\\
-JPN & Japan\\
-KOR & South Korea\\
-LUX & Luxemburg\\
-MEX & Mexico\\
-NLD & Netherlands\\
-NOR & Norway\\
-NZL & New Zealand\\
-PRT & Portugal\\
-SWE & Sweden\\
-TUR & Turkey\\
-USA & United States\\
-\end{tabular}
-\end{center}
 
 
 \section{Conclusion}
@@ -381,16 +296,6 @@ Install latex: \url{https://www.latex-project.org/get/}
 \item overleaf: \url{https://www.overleaf.com/}
 \item texmaker: \url{https://www.xm1math.net/texmaker/}
 \item tex studio: \url{https://www.texstudio.org/}
-\end{itemize}
-
-More general editors where you can also edit latex:
-
-\begin{itemize}
-\item atom: \url{https://atom.io/}
-\begin{itemize}
-\item and how to use with latex: \url{https://towardsdatascience.com/setting-up-latex-on-your-atom-editor-7ea624571d50}
-\end{itemize}
-\item vim: \url{https://www.vim.org/docs.php}
 \end{itemize}
 
 
