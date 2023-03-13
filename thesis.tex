@@ -1,22 +1,17 @@
-% Created 2022-03-11 Fri 07:37
+% Created 2023-03-13 Mon 14:07
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
-\usepackage{grffile}
 \usepackage{longtable}
 \usepackage{wrapfig}
 \usepackage{rotating}
 \usepackage[normalem]{ulem}
 \usepackage{amsmath}
-\usepackage{textcomp}
 \usepackage{amssymb}
 \usepackage{capt-of}
 \usepackage{hyperref}
-\makeatletter
-\newcommand{\citeprocitem}[2]{\hyper@linkstart{cite}{citeproc_bib_item_#1}#2\hyper@linkend}
-\makeatother
 \author{Adam Smith}
 \date{\today}
 \title{Thesis title}
@@ -25,7 +20,7 @@
  pdftitle={Thesis title},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 27.2 (Org mode 9.4.4)}, 
+ pdfcreator={Emacs 28.2 (Org mode 9.5.5)}, 
  pdflang={English}}
 \begin{document}
 
@@ -62,7 +57,7 @@ Running python code in this file only works in emacs org-mode; not in latex.
 \newpage
 
 \section{Introduction}
-\label{sec:org9c25179}
+\label{sec:orgda66704}
 \label{sec:intro}
 
 This file shows you how to use \href{https://www.gnu.org/software/emacs/}{emacs} \href{https://orgmode.org/}{org mode} to write a thesis; shows you how to cite references, make footnotes, equations etc.
@@ -73,14 +68,14 @@ In order to use emacs, you need to install it. In Appendix \ref{sec:install} we 
 
 
 \section{Literature references}
-\label{sec:org0ebab66}
+\label{sec:org8f5d973}
 
 There are a number of ways in which you can do literature citations in org-mode. We will work with org-ref:
 \begin{itemize}
 \item \url{https://github.com/jkitchin/org-ref}
 \end{itemize}
 
-The syntax for including references is as follows. See Farrell and Klemperer \citeprocitem{2}{2007} for an analysis. We can also have references between brackets (\citeprocitem{1}{Athey and Imbens 2019}): that is, \texttt{citep} instead of \texttt{citet}. \texttt{armstrong-2007-chapt-coord} is the bibtex key, as you can see in the file \texttt{references.bib}.
+The syntax for including references is as follows. See \citet{armstrong-2007-chapt-coord} for an analysis. We can also have references between brackets \citep{athey-2019-machin-learn}: that is, \texttt{citep} instead of \texttt{citet}. \texttt{armstrong-2007-chapt-coord} is the bibtex key, as you can see in the file \texttt{references.bib}.
 
 An entry in a bib-tex file looks as follows:
 
@@ -102,13 +97,13 @@ An entry in a bib-tex file looks as follows:
 }
 \end{verbatim}
 
-To cite this paper, we type Prager and Schmitt \citeprocitem{3}{2021}.
+To cite this paper, we type \citet{prager-2021-employ-consol-wages}.
 
 If you use the \texttt{init.el} file for emacs, you can use the keys: C-c ] (press control (Ctrl) and c together; release these keys and then press the ]-key). The bottom part of the screen then gives you possible papers to cite from your \texttt{references.bib} file.
 
 
 \section{References to sections, equations, tables etc.}
-\label{sec:org1bb7346}
+\label{sec:org6fde9b5}
 
 As we explained in Section \ref{sec:intro}. The previous sentence shows the syntax for a reference to a section, equation, table, figure etc. Type \texttt{ref:} and then the name of the label you are refering to. This can also be done with key strokes: C-c )
 
@@ -129,7 +124,7 @@ As we show in equation \eqref{eq:1}.
 See Table \ref{table1}.
 
 \begin{table}[htbp]
-\caption{\label{tab:orgcede634}\label{table1} This table shows unemployment and gdp per head.}
+\caption{\label{tab:orgbfc4b80}\label{table1} This table shows unemployment and gdp per head.}
 \centering
 \begin{tabular}{lrr}
 country & unemployment & gdp\\
@@ -173,17 +168,17 @@ The following figure we will generate with python code in the appendix using the
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./fig.png}
-\caption{\label{fig:orgf1c6f48}\label{figure1} Figure with unemployment and gdp}
+\caption{\label{fig:org92858f6}\label{figure1} Figure with unemployment and gdp}
 \end{figure}
 
 See Figure \ref{figure1} is the way you can refer to a figure.
 
 \section{What should your editor be able to do?}
-\label{sec:org49a6cc0}
+\label{sec:org85ffca8}
 
 
 \subsection{Basics}
-\label{sec:org1c9d140}
+\label{sec:orgfe4494e}
 
 \begin{itemize}
 \item type text\ldots{}
@@ -211,7 +206,7 @@ See Figure \ref{figure1} is the way you can refer to a figure.
 
 
 \subsubsection{simple column operations}
-\label{sec:org1ab5bc1}
+\label{sec:org0e2da97}
 
 123456789
 123456789
@@ -224,7 +219,7 @@ See Figure \ref{figure1} is the way you can refer to a figure.
 
 
 \subsection{Advanced}
-\label{sec:orgf039d2b}
+\label{sec:org6643182}
 
 \begin{itemize}
 \item combine code and latex
@@ -234,7 +229,7 @@ See Figure \ref{figure1} is the way you can refer to a figure.
 
 
 \subsubsection{more realistic column operations}
-\label{sec:orga46abd7}
+\label{sec:org451c284}
 
 Turn the table here: \url{http://fmwww.bc.edu/ec-p/data/oecd/oecd.ctylist.html} into a python dictionary:
 \begin{itemize}
@@ -356,21 +351,15 @@ USA & United States\\
 
 
 \section{Conclusion}
-\label{sec:org63fe03f}
+\label{sec:org691ca0f}
 
 Here you can type the conclusion which is then followed by the bibliography.
 
 \section{Bibliography}
-\label{sec:orgc95582e}
+\label{sec:org4815241}
 
 
-
-\hypertarget{citeproc_bib_item_1}{Athey, Susan, and Guido W. Imbens. 2019. “Machine Learning Methods That Economists Should Know About.” \textit{Annual Review of Economics} 11 (1): 685–725. doi:\href{https://doi.org/10.1146/annurev-economics-080217-053433}{10.1146/annurev-economics-080217-053433}.}
-
-\hypertarget{citeproc_bib_item_2}{Farrell, Joseph, and Paul Klemperer. 2007. “Chapter 31 Coordination and Lock-in: Competition with Switching Costs and Network Effects,” edited by M. Armstrong and R. Porter, 3:1967–2072. Handbook of Industrial Organization, Supplement C. Elsevier. doi:\href{https://doi.org/10.1016/S1573-448X(06)03031-7}{10.1016/S1573-448X(06)03031-7}.}
-
-\hypertarget{citeproc_bib_item_3}{Prager, Elena, and Matt Schmitt. 2021. “Employer Consolidation and Wages: Evidence from Hospitals.” \textit{American Economic Review} 111 (2). American Economic Association: 397–427. doi:\href{https://doi.org/10.1257/aer.20190690}{10.1257/aer.20190690}.}
-
+\bibliography{references}
 
 
 
@@ -380,18 +369,18 @@ Here you can type the conclusion which is then followed by the bibliography.
 
 
 \section{Things to install}
-\label{sec:org0c5b78d}
+\label{sec:orga7cc6ce}
 \label{sec:install}
 
 \subsection{latex}
-\label{sec:org61c7090}
+\label{sec:orgd7cc053}
 
 Install latex: \url{https://www.latex-project.org/get/}
 
 
 
 \subsection{latex editors if you do not want to use emacs}
-\label{sec:orga751499}
+\label{sec:org242f65e}
 
 \begin{itemize}
 \item winedt: \url{https://www.winedt.com/}
@@ -412,18 +401,18 @@ More general editors where you can also edit latex:
 
 
 \subsection{git}
-\label{sec:org659820a}
+\label{sec:orgb864045}
 
 install git: \url{https://git-scm.com/downloads}
 
 \subsection{Emacs}
-\label{sec:orgc6ff16d}
+\label{sec:org4503806}
 
 In the lecture I will illustrate what an editor can/should do using emacs.
 
 
 \subsubsection{Emacs on Windows}
-\label{sec:org04f9672}
+\label{sec:org8cf15de}
 
 \begin{itemize}
 \item go to: \url{http://mirror.team-cymru.com/gnu/emacs/windows/emacs-27/}
@@ -432,7 +421,7 @@ In the lecture I will illustrate what an editor can/should do using emacs.
 \end{itemize}
 
 \subsubsection{Emacs on Mac OS}
-\label{sec:org09aa816}
+\label{sec:org675b8fa}
 
 For Mac Os:
 \begin{itemize}
@@ -447,19 +436,19 @@ brew install emacs-plus
 \end{verbatim}
 
 \subsubsection{Emacs on Linux}
-\label{sec:org352f79d}
+\label{sec:org0a57834}
 
 When you are using Linux, you probably know what you are doing. But just in case, the commands for your package manager can be found here: \url{https://www.gnu.org/software/emacs/download.html}
 
 
 \subsubsection{org-mode}
-\label{sec:orgfda8a15}
+\label{sec:org485afa5}
 
 When you install emacs, org-mode is installed as well (comes with emacs)
 
 
 \subsection{introductions to emacs}
-\label{sec:org77ae7e3}
+\label{sec:orgd97a38d}
 
 It is easy to get lost in emacs. Hence do not try to use everything at once. A couple of basic things, you need from the start (like opening and saving files). For the other things: move step-by-step. 
 
@@ -492,7 +481,7 @@ There are other great introductions to emacs as well:
 
 
 \subsection{next steps}
-\label{sec:org86ec6b5}
+\label{sec:org5348c7c}
 
 You can extend the configuration of emacs by yourself, e.g. by watching tutorials like: \url{https://www.youtube.com/playlist?list=PLEoMzSkcN8oNmd98m\_6FoaJseUsa6QGm2}
 
@@ -500,7 +489,7 @@ Or you can use pre-configured emacs distributions like scimax and doom emacs.
 
 
 \subsubsection{scimax}
-\label{sec:org6044152}
+\label{sec:org50d8583}
 
 Scimax is developed for engineers, but works perfectly well for economists. More details can be found here:
 \begin{itemize}
@@ -509,7 +498,7 @@ Scimax is developed for engineers, but works perfectly well for economists. More
 \end{itemize}
 
 \subsubsection{Doom}
-\label{sec:orgf3ba285}
+\label{sec:org9677935}
 
 Emacs has an absurd number of features and how do you choose the right ones if you do not know about them? Doom emacs has very reasonable default settings:
 \begin{itemize}

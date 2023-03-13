@@ -81,7 +81,7 @@ By default you are in ``evil mode''; that is, modal editing.
 
 \section{Literature references}
 
-There are a number of ways in which you can do literature citations in org-mode. We will work with reftex:
+There are a number of ways in which you can do literature citations in emacs. We will work with reftex:
 \begin{itemize}
 \item \url{https://www.gnu.org/software/auctex/reftex.html}
 \item to include a reference, type C-c [
@@ -89,7 +89,6 @@ There are a number of ways in which you can do literature citations in org-mode.
 \item to get a TOC for your file: C-c =
 \end{itemize}
 The syntax for including references is as follows. See \citet{armstrong-2007-chapt-coord} for an analysis. We can also have references between brackets \citep{athey-2019-machin-learn}: that is, \texttt{citep} instead of \texttt{citet}. \texttt{armstrong-2007-chapt-coord} is the bibtex key, as you can see in the file \texttt{references.bib}.
-
 
 An entry in a bib-tex file looks as follows:
 
@@ -111,9 +110,13 @@ An entry in a bib-tex file looks as follows:
 }
 \end{verbatim}
 
-To cite this paper, we type \cite{prager-2021-employ-consol-wages}.
+To cite this paper, we type
+\begin{verbatim}
+\cite{prager-2021-employ-consol-wages}.
+\end{verbatim}
+to get \cite{prager-2021-employ-consol-wages}.
 
-If you use the \texttt{init.el} file for emacs, you can use the keys: C-c [ (press control (Ctrl) and c together; release these keys and then press the [-key). 
+As mentioned, if you use the \texttt{init.el} file for emacs, you can use the keys: C-c [ (press control (Ctrl) and c together; release these keys and then press the [-key). 
 
 
 \section{References to sections, equations, tables etc.}
@@ -124,6 +127,9 @@ A label is typed in latex format as: \texttt{\textbackslash{}label\{name\_of\_la
 
 Here we have some in-line math: \(x^2\).\footnote{\label{fn:footnote} This is a footnote.}
 
+If you want to preview your latex, you can type: C-c C-p C-b (or use the Preview menu above).
+
+
 As you can see in footnote \ref{fn:footnote}; you can also refer to footnotes.
 
 
@@ -131,8 +137,6 @@ As you can see in footnote \ref{fn:footnote}; you can also refer to footnotes.
 \label{eq:1}
 a^2 + b^2 = c^2
 \end{equation}
-
-If you want to preview your math: use the preview-menu above or type C-c C-p C-b
 
 As we show in equation (\ref{eq:1}).
 
@@ -198,7 +202,7 @@ See Figure \ref{figure1} is the way you can refer to a figure.
 \item work on different parts of the same file in a split window
 \item help with syntax, e.g. by providing snippets for equations, environments etc.
 \begin{itemize}
-\item e.g. with org cdlatex mode: type "equ" and then TAB to get an equation environment
+\item e.g. with (org) cdlatex mode: type "equ" and then TAB to get an equation environment
 \item ` a to get \(\alpha\)
 \end{itemize}
 \item operate on regions: e.g. for search and replace
@@ -243,6 +247,7 @@ The derivative of the function $f(x) = x^2 + 3x +10$ is $f(x) = x^2 + 3 x + 10$
 \item press a and d
 \item give x as the variable and press Enter
 \item emacs gives you the derivative
+\item M-x calc-embedded (to get out of calc-mode)
 \end{itemize}
 
 \subsubsection{column operations}
@@ -259,7 +264,7 @@ bananas
 \item type begin itemize at the top
 \item use C-c ] at the end
 \item C-v and block the start of each line
-\item I and type ``\\item '' then press ESC
+\item I and type \texttt{\textbackslash{}item} then press ESC
 \end{itemize}
 
 

@@ -2,8 +2,6 @@
 #+author: Adam Smith
 #+options: toc:nil
 
-#+PROPERTY: header-args  :session thesis :kernel python3 :async yes
-
 
 
 #+begin_abstract
@@ -39,9 +37,17 @@ Running python code in this file only works in emacs org-mode; not in latex.
 * Introduction
 \label{sec:intro}
 
+Instruction:
+- once you installed emacs
+- and cloned this repository: =git clone https://github.com/janboone/thesis_template.git=
+- navigate in your terminal/shell to the folder "thesis_template"
+- in the shell type: =emacs -q -l init.el=
+- then emacs installs and starts up with the relevant packages
+
+
 This file shows you how to use [[https://www.gnu.org/software/emacs/][emacs]] [[https://orgmode.org/][org mode]] to write a thesis; shows you how to cite references, make footnotes, equations etc.
 
-Alternatively, you can use latex directly in which case you can consider the file in this repository that ends in =.tex=.
+Alternatively, you can use latex directly in which case you can consider the file in this repository that ends in =_latex.tex=.
 
 In order to use emacs, you need to install it. In Appendix ref:sec:install we explain how emacs can be installed.
 
@@ -198,7 +204,7 @@ Turn the table here: http://fmwww.bc.edu/ec-p/data/oecd/oecd.ctylist.html into a
  - add {} to turn this into a dictionary
  - a video on how to do this with regular emacs keybindings, can be found here: https://www.youtube.com/watch?v=pcA5NeEudgU
 
- #+begin_src jupyter-python
+ #+begin_src python :results output
      dict = {
      'AUS' : 'Australia',
      'AUT' : 'Austria',
@@ -226,7 +232,7 @@ Turn the table here: http://fmwww.bc.edu/ec-p/data/oecd/oecd.ctylist.html into a
      'SWE' : 'Sweden',
      'TUR' : 'Turkey',
      'USA' : 'United States'}
-     dict['NLD']
+     print(dict['NLD'])
  #+end_src
 
  #+RESULTS:
@@ -327,12 +333,6 @@ Install latex: https://www.latex-project.org/get/
 - texmaker: https://www.xm1math.net/texmaker/
 - tex studio: https://www.texstudio.org/
 
-More general editors where you can also edit latex:
-
-- atom: https://atom.io/
-  - and how to use with latex: https://towardsdatascience.com/setting-up-latex-on-your-atom-editor-7ea624571d50
-- vim: https://www.vim.org/docs.php
-
    
 ** git
   
@@ -345,8 +345,9 @@ install git: https://git-scm.com/downloads
 
 *** Emacs on Windows
 
- - go to: http://mirror.team-cymru.com/gnu/emacs/windows/emacs-27/
- - download =emacs-27.2-x86_64-installer.exe= to your Downloads folder: http://mirror.team-cymru.com/gnu/emacs/windows/emacs-27/emacs-27.2-x86_64-installer.exe
+ - go to: http://mirror.team-cymru.com/gnu/emacs/windows/emacs-28/
+ - download =emacs-28.1-installer.exe= to your Downloads folder:
+[[http://mirror.team-cymru.com/gnu/emacs/windows/emacs-28/emacs-28.1-installer.exe]]
  - run the downloaded =exe= file
 
 *** Emacs on Mac OS
@@ -395,8 +396,6 @@ There are other great introductions to emacs as well:
 
 ** basic configuration :noexport:
 
-
-
 Make emacs look better. When you start emacs "out-of-the-box" it does not look very nice, nor is it very easy to use. The code block below helps to remedy this. It is based on this init-file:
 - https://github.com/daviwil/emacs-from-scratch/blob/3075158cae210060888001c0d76a58a4178f6a00/init.el
 which is discussed in this video:
@@ -404,6 +403,7 @@ which is discussed in this video:
 It is highly recommended that you watch this video to get a sense on how the customization of emacs works.
 
 You can use this code by placing your cursor in the code block below (it is written in emacs-lisp) and then press: C-c C-c
+
 
 Before using the code, you need to install the font that you want to use.
 
@@ -425,7 +425,7 @@ At the end of the code block I activate evil mode. You probably do not want to d
 		    (set-fringe-mode 10)        ; Give some breathing room
 		    (menu-bar-mode +1)            ; Disable the menu bar: use -1
 		    (setq visible-bell t)
-		    (set-face-attribute 'default nil :font "Source Code Pro" :height 260)
+		    ;(set-face-attribute 'default nil :font "Source Code Pro" :height 260)
 		    (load-theme 'leuven)
 		    (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 		    (require 'package)
@@ -561,12 +561,7 @@ At the end of the code block I activate evil mode. You probably do not want to d
 #+end_src
 
 #+RESULTS:
-: t
 
-
-   #+begin_src shell
-git clone https://github.com/jkitchin/org-ref.git
-   #+end_src
 
 ** next steps
 
@@ -594,7 +589,7 @@ Emacs has an absurd number of features and how do you choose the right ones if y
 
 Now we can make code blocks, e.g. using python. This code block makes use of the data in Table ref:table1.
 
-#+begin_src python :var data=table1
+#+begin_src python :var data=table1 :results output
 
   import numpy as np
   import pandas as pd
@@ -605,26 +600,23 @@ Now we can make code blocks, e.g. using python. This code block makes use of the
   df = df.astype({'gdp':float,'unemployment':float})
 
   plt.plot(df.gdp,df.unemployment,'o')
-  plt.savefig('fig.png')
+  plt.savefig('fig.png')          
 
 
 #+end_src
 
 #+RESULTS:
-: None
 
 [[./fig.png]]
 
 
-If you have installed anaconda, you can also use the jupyter kernel. If this does not work, the python code block above should work.
 
-
-#+begin_src jupyter-python
+#+begin_src python :results output
   import numpy as np
-  np.arange(5)
+  print(np.arange(5))
 #+end_src
 
 #+RESULTS:
-: array([0, 1, 2, 3, 4])
+: [0 1 2 3 4]
 
 For an overview of the programming languages you can use in org-mode, see: https://orgmode.org/worg/org-contrib/babel/languages/index.html
