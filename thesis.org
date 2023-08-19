@@ -394,6 +394,10 @@ There are other great introductions to emacs as well:
   - this gives information on emacs and all the packages you installed with emacs
 
 
+Book/web introductions to Emacs:
+- https://www2.lib.uchicago.edu/keith/emacs/
+
+
 ** basic configuration :noexport:
 
 Make emacs look better. When you start emacs "out-of-the-box" it does not look very nice, nor is it very easy to use. The code block below helps to remedy this. It is based on this init-file:
